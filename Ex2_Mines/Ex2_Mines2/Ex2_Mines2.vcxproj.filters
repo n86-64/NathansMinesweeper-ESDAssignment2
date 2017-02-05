@@ -10,15 +10,31 @@
     <Filter Include="Game">
       <UniqueIdentifier>{51186e72-8637-4c94-88e6-d92ef20b6787}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{5b8357cd-5513-4b47-a30a-8ca27bf4b8aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{d230d3e3-6b1d-4c57-a9df-ad405ac12b94}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Main Game</Filter>
     </ClCompile>
+    <ClCompile Include="Math_Vector2D.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="gameMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="gameMenu.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Math_Vector2D.h">
+      <Filter>Helpers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

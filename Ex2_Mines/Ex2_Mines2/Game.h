@@ -18,6 +18,7 @@ Purpose - The main class object which will process all the game logic.
 #include <string>
 #include <time.h>
 
+#include "gameMenu.h"
 
 class Game {
 public:
@@ -32,5 +33,5 @@ private:
 	void Quit(); 
 
 private:
-
+	gameMenu theGameMenu;
 };
