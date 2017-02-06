@@ -13,7 +13,7 @@ void gameMenu::printMenu()
 		<< "P - Play" << std::endl
 		<< "S - Settings" << std::endl
 		<< "E - Exit" << std::endl
-		<< ">>> " << std::endl;
+		<< ">>> ";
 }
 
 int gameMenu::retrieveMenuSelection()
@@ -23,9 +23,12 @@ int gameMenu::retrieveMenuSelection()
 	int menuSelection = 0;
 	bool inputIsValid = true; 
 
+
 	do 
 	{
 		std::getline(std::cin, menuInput);
+		menuInput[0] = std::toupper(menuInput[0], loc);
+
 		inputIsValid = true;
 
 		if (menuInput.length() == 1) 
@@ -49,6 +52,8 @@ int gameMenu::retrieveMenuSelection()
 		{
 			inputIsValid = false;
 		}
+
+
 	} while (!inputIsValid);
 
 	return menuSelection;

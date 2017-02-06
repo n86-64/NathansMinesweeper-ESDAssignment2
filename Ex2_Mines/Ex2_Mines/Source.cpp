@@ -3,22 +3,34 @@
 
 #pragma warning (disable : 4996)
 
+
+
+void refrenceTest() 
+{
+	int* Point = new int(100);
+	delete Point;
+}
+
+
+
 int main() 
 {
+
 	char enterChar = '\0';
 	std::string test = "Hello world"; 
 	std::string test2; 
 	std::string printTest;
+
+
 
 	for (int i = 0; i < test.length(); i++) 
 	{
 		printTest += test[i];
 	}
 
-	std::cout << printTest << std::endl;
+	// refrenceTest();
 
-	std::getline(std::cin, test2); 
-	std::cout << test2;
+
 	scanf("%c", &enterChar);
 
 	return 0;

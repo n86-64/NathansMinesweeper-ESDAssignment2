@@ -1,2 +1,4 @@
-﻿  Ex2_Mines.vcxproj -> C:\Users\Nathan\Source\Repos\NathansMinesweeper-ESDAssignment2_2\Ex2_Mines\Debug\Ex2_Mines.exe
+﻿  Source.cpp
+c:\users\nathan\source\repos\nathansminesweeper-esdassignment2_2\ex2_mines\ex2_mines\source.cpp(27): warning C4018: '<': signed/unsigned mismatch
+  Ex2_Mines.vcxproj -> C:\Users\Nathan\Source\Repos\NathansMinesweeper-ESDAssignment2_2\Ex2_Mines\Debug\Ex2_Mines.exe
   Ex2_Mines.vcxproj -> C:\Users\Nathan\Source\Repos\NathansMinesweeper-ESDAssignment2_2\Ex2_Mines\Debug\Ex2_Mines.pdb (Partial PDB)

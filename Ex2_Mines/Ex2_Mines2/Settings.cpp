@@ -45,7 +45,7 @@ void Settings::setGridHeight(int newValue)
 
 void Settings::setClassicModeState(int newValue)
 {
-	classicMode = (bool)newValue;
+	classicMode = newValue;
 }
 
 void Settings::setDifficultyLevel(int newValue)

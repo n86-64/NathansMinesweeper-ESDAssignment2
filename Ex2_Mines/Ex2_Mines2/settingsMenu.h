@@ -12,19 +12,21 @@ Purpose - The provides logic for menu navigation and setting menu parameters.
 
 #pragma once
 
-#include <string>
 #include <iostream>
+#include <string>
 
 #include "Settings.h"
 
 class settingsMenu {
 public:
-	settingsMenu(Settings& parameterData);
+	settingsMenu(Settings* parameterData); 
+	~settingsMenu();
 
 	void printMenu();
-	void retrieveMenuSelection();
+	void retrieveMenuSelection(bool& inMenu);
 
 private:
 	Settings* settingsToModify = nullptr;
 	bool checkInput(std::string input, int& parameterValue);
+	bool checkInputRangeValid(int paramValue, int rangeMin, int rangeMax, bool& validFlag);
 };

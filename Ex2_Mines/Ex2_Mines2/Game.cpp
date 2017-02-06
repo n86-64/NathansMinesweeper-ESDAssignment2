@@ -1,13 +1,12 @@
 #include "Game.h"
 
 Game::Game()
-	: theSettingsMenu(gameSettings)
+	: theSettingsMenu(&gameSettings)
 {
 }
 
 Game::~Game() 
 {
-	// TODO - add cleanup logic here. 
 }
 
 void Game::startGame()
@@ -23,11 +22,18 @@ void Game::startGame()
 			startGameLoop();
 			break;
 		case 2:
+			theSettingsMenu.printMenu();
 			break;
 		case 3:
+			quitGame = true;
 			break;
 		}
 
+		system("cls");
+
 	} while (!quitGame);
-	
+}
+
+void Game::startGameLoop()
+{
 }
