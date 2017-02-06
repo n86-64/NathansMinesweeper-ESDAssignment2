@@ -12,3 +12,43 @@ void Settings::restoreDefaults()
 	classicMode = true;
 	difficultyLevel = DIFFICULTY_EASY;
 }
+
+int Settings::getGridWidth()
+{
+	return fieldDimenstions.getX();
+}
+
+int Settings::getGridHeight()
+{
+	return fieldDimenstions.getY();
+}
+
+bool Settings::getClassicModeState()
+{
+	return classicMode;
+}
+
+Difficulty Settings::getDifficultyLevel()
+{
+	return difficultyLevel;
+}
+
+void Settings::setGridWidth(int newValue)
+{
+	fieldDimenstions.setX(newValue);
+}
+
+void Settings::setGridHeight(int newValue)
+{
+	fieldDimenstions.setY(newValue);
+}
+
+void Settings::setClassicModeState(int newValue)
+{
+	classicMode = (bool)newValue;
+}
+
+void Settings::setDifficultyLevel(int newValue)
+{
+	difficultyLevel = (Difficulty)newValue;
+}

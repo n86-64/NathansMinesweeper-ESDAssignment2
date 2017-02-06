@@ -20,12 +20,12 @@ int Vector2D::getY()
 	return y;
 }
 
-int Vector2D::setX(int newValue) 
+void Vector2D::setX(int newValue) 
 {
 	x = newValue;
 }
 
-int Vector2D::setY(int newValue) 
+void Vector2D::setY(int newValue) 
 {
 	y = newValue;
 }

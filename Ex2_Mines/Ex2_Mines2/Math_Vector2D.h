@@ -21,8 +21,8 @@ public:
 
 	int getX();
 	int getY();
-	int setX(int newValue);
-	int setY(int newValue);
+	void setX(int newValue);
+	void setY(int newValue);
 
 private:
 	// REVIEW - should be constructed to -1 by default? 

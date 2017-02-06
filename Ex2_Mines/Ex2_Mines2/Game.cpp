@@ -1,6 +1,7 @@
 #include "Game.h"
 
 Game::Game()
+	: theSettingsMenu(gameSettings)
 {
 }
 
@@ -19,6 +20,7 @@ void Game::startGame()
 		switch (theGameMenu.retrieveMenuSelection()) 
 		{
 		case 1:
+			startGameLoop();
 			break;
 		case 2:
 			break;

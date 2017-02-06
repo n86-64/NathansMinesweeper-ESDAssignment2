@@ -17,7 +17,7 @@ Purpose - The main class object which will process store the parameters for the 
 
 
 enum Difficulty {
-	DIFFICULTY_EASY = 0,
+	DIFFICULTY_EASY = 1,
 	DIFFICULTY_MEDIUM,
 	DIFFICULTY_HARD
 };
@@ -28,6 +28,18 @@ public:
 	Settings();
 
 	void restoreDefaults(); 
+
+	// get/set
+	int getGridWidth();
+	int getGridHeight();
+	bool getClassicModeState();
+	Difficulty getDifficultyLevel(); 
+
+
+	void setGridWidth(int newValue);
+	void setGridHeight(int newValue);
+	void setClassicModeState(int newValue);
+	void setDifficultyLevel(int newValue);
 
 private:
 	Vector2D fieldDimenstions;

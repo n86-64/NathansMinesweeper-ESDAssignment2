@@ -12,6 +12,8 @@ Purpose - The provides logic for menu navigation and setting menu parameters.
 
 #pragma once
 
+#include <string>
+#include <iostream>
 
 #include "Settings.h"
 
@@ -21,8 +23,8 @@ public:
 
 	void printMenu();
 	void retrieveMenuSelection();
-	void checkInput();
 
 private:
-	Settings* settingsToMidify = nullptr;
+	Settings* settingsToModify = nullptr;
+	bool checkInput(std::string input, int& parameterValue);
 };

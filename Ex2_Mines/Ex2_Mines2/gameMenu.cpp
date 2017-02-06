@@ -1,6 +1,10 @@
 #include <locale>
 #include "gameMenu.h"
 
+gameMenu::gameMenu() 
+{
+
+}
 
 void gameMenu::printMenu()
 {
@@ -22,10 +26,9 @@ int gameMenu::retrieveMenuSelection()
 	do 
 	{
 		std::getline(std::cin, menuInput);
-		std::toupper(menuInput, loc);
 		inputIsValid = true;
 
-		if (menuInput.length == 1) 
+		if (menuInput.length() == 1) 
 		{
 			switch (menuInput[0])
 			{
@@ -46,7 +49,6 @@ int gameMenu::retrieveMenuSelection()
 		{
 			inputIsValid = false;
 		}
-
 	} while (!inputIsValid);
 
 	return menuSelection;

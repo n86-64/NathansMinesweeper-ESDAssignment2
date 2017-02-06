@@ -19,6 +19,12 @@
     <Filter Include="Configuration">
       <UniqueIdentifier>{19c2cc06-d2b2-4e31-b6bb-67f42a317388}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI\game menu">
+      <UniqueIdentifier>{0654b593-ac85-4499-bd21-ba9e2bf310ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\settings menu">
+      <UniqueIdentifier>{ccaf320f-7ad3-4899-9332-d2a0e4f5b5ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -27,18 +33,22 @@
     <ClCompile Include="Math_Vector2D.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="gameMenu.cpp" />
-    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="gameMenu.cpp">
+      <Filter>UI\game menu</Filter>
+    </ClCompile>
+    <ClCompile Include="settingsMenu.cpp">
+      <Filter>UI\settings menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Configuration</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="gameMenu.h">
-      <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="Math_Vector2D.h">
       <Filter>Helpers</Filter>
@@ -46,8 +56,11 @@
     <ClInclude Include="Settings.h">
       <Filter>Configuration</Filter>
     </ClInclude>
+    <ClInclude Include="gameMenu.h">
+      <Filter>UI\game menu</Filter>
+    </ClInclude>
     <ClInclude Include="settingsMenu.h">
-      <Filter>UI</Filter>
+      <Filter>UI\settings menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
