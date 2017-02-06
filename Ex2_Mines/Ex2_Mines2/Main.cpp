@@ -11,7 +11,24 @@ Purpose - The main thread where the application will both start and terminate.
 */
 
 
+// REVIEW - Use SDL for sound (easier?)
+
+
+#include <iostream>
+#include <string>
+
+#include "Game.h"
+
+
 int main() 
 {
-   
+	Game theGame; 
+
+	std::cout << "Welcome to Mainac Minesweeper"
+		<< std::endl
+		<< "Copyright Nathan Butt/Maniac Software 2017 \n";
+	
+
+
+	return 0; 
 }
