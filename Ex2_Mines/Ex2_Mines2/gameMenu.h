@@ -23,7 +23,7 @@ public:
 	gameMenu(); 
 
 	void printMenu();
-	void retrieveMenuSelection();
+	int  retrieveMenuSelection();
 
 private:
 	void checkInput(std::string theInput, Vector2D& parameterRefrence); // TODO - Add in system for paramenters

@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ex2_Mines", "Ex2_Mines\Ex2_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ex2_Mines2", "Ex2_Mines2\Ex2_Mines2.vcxproj", "{9FCE370C-E454-4E15-B806-2E1C8252569C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MyLab", "MyLab", "{6B0315D9-31DB-4889-B0E7-D303CE52E202}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -34,5 +36,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1A3A3A77-D508-4ED8-8F51-E654D607F21C} = {6B0315D9-31DB-4889-B0E7-D303CE52E202}
 	EndGlobalSection
 EndGlobal

@@ -25,6 +25,7 @@
       <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="gameMenu.cpp" />
+    <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">

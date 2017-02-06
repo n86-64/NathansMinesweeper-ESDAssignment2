@@ -1,4 +1,5 @@
 ﻿  Source.cpp
-c:\users\nathan\documents\games technology (university)\year 1\module 1 - entertainment software development\assignments\component b\exersice 2\ex2_mines\ex2_mines\source.cpp(12): warning C4018: '<': signed/unsigned mismatch
-  Ex2_Mines.vcxproj -> C:\Users\Nathan\Documents\Games Technology (University)\Year 1\Module 1 - Entertainment Software Development\Assignments\Component B\Exersice 2\Ex2_Mines\Debug\Ex2_Mines.exe
-  Ex2_Mines.vcxproj -> C:\Users\Nathan\Documents\Games Technology (University)\Year 1\Module 1 - Entertainment Software Development\Assignments\Component B\Exersice 2\Ex2_Mines\Debug\Ex2_Mines.pdb (Partial PDB)
+c:\users\nathan\source\repos\nathansminesweeper-esdassignment2_2\ex2_mines\ex2_mines\source.cpp(13): warning C4018: '<': signed/unsigned mismatch
+  LINK : C:\Users\Nathan\Source\Repos\NathansMinesweeper-ESDAssignment2_2\Ex2_Mines\Debug\Ex2_Mines.exe not found or not built by the last incremental link; performing full link
+  Ex2_Mines.vcxproj -> C:\Users\Nathan\Source\Repos\NathansMinesweeper-ESDAssignment2_2\Ex2_Mines\Debug\Ex2_Mines.exe
+  Ex2_Mines.vcxproj -> C:\Users\Nathan\Source\Repos\NathansMinesweeper-ESDAssignment2_2\Ex2_Mines\Debug\Ex2_Mines.pdb (Partial PDB)

@@ -26,9 +26,10 @@ int main()
 
 	std::cout << "Welcome to Mainac Minesweeper"
 		<< std::endl
-		<< "Copyright Nathan Butt/Maniac Software 2017 \n";
+		<< "Copyright Nathan Butt/Maniac Software 2017"
+		<< std::endl;
 	
-
+	theGame.startGame(); 
 
 	return 0; 
 }
