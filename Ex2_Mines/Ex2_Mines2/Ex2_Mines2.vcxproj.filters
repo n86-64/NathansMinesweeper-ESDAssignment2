@@ -25,6 +25,12 @@
     <Filter Include="Grid System">
       <UniqueIdentifier>{d230d3e3-6b1d-4c57-a9df-ad405ac12b94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Grid System\Grid">
+      <UniqueIdentifier>{7f9e81b9-bee8-4c43-8b68-5f021e725a62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Grid System\Cell">
+      <UniqueIdentifier>{3efc429f-4b8b-4dea-ba79-357f1de51e5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -46,7 +52,7 @@
       <Filter>Configuration</Filter>
     </ClCompile>
     <ClCompile Include="Cell.cpp">
-      <Filter>Grid System</Filter>
+      <Filter>Grid System\Cell</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,7 +72,10 @@
       <Filter>UI\settings menu</Filter>
     </ClInclude>
     <ClInclude Include="Cell.h">
-      <Filter>Grid System</Filter>
+      <Filter>Grid System\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Grid System\Grid</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
