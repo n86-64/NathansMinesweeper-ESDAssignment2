@@ -45,7 +45,9 @@
     <ClCompile Include="Settings.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
-    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="Cell.cpp">
+      <Filter>Grid System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
