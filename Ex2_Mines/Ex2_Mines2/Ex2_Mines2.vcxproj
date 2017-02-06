@@ -110,6 +110,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="gameMenu.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -118,6 +119,7 @@
     <ClCompile Include="settingsMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="gameMenu.h" />
     <ClInclude Include="Math_Vector2D.h" />

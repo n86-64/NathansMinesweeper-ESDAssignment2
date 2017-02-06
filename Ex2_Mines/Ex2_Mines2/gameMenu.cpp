@@ -12,8 +12,7 @@ void gameMenu::printMenu()
 		<< std::endl
 		<< "P - Play" << std::endl
 		<< "S - Settings" << std::endl
-		<< "E - Exit" << std::endl
-		<< ">>> ";
+		<< "E - Exit" << std::endl;
 }
 
 int gameMenu::retrieveMenuSelection()
@@ -26,6 +25,7 @@ int gameMenu::retrieveMenuSelection()
 
 	do 
 	{
+		std::cout << ">>> ";
 		std::getline(std::cin, menuInput);
 		menuInput[0] = std::toupper(menuInput[0], loc);
 
@@ -45,11 +45,15 @@ int gameMenu::retrieveMenuSelection()
 				menuSelection = 3;
 				break;
 			default:
+				std::cout << "Invalid option. Please choose a valid option from above."
+				          << std::endl;
 				inputIsValid = false;
 			}
 		}
 		else 
 		{
+			std::cout << "Input is too long. Input should be a single character + the ENTER key. Please enter a valid input"
+				      << std::endl;
 			inputIsValid = false;
 		}
 
