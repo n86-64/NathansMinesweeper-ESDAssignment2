@@ -28,7 +28,7 @@ int main()
 		<< std::endl
 		<< "Copyright Nathan Butt/Maniac Software 2017"
 		<< std::endl;
-	
+
 	theGame.startGame(); 
 
 	return 0; 

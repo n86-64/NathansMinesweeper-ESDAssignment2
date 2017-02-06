@@ -16,6 +16,9 @@
     <Filter Include="Renderer">
       <UniqueIdentifier>{d230d3e3-6b1d-4c57-a9df-ad405ac12b94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Configuration">
+      <UniqueIdentifier>{19c2cc06-d2b2-4e31-b6bb-67f42a317388}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -25,7 +28,10 @@
       <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="gameMenu.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -36,6 +42,12 @@
     </ClInclude>
     <ClInclude Include="Math_Vector2D.h">
       <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="settingsMenu.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

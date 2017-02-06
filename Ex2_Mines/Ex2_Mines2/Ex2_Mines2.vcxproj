@@ -114,11 +114,14 @@
     <ClCompile Include="gameMenu.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Math_Vector2D.cpp" />
+    <ClCompile Include="Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="gameMenu.h" />
     <ClInclude Include="Math_Vector2D.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="settingsMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

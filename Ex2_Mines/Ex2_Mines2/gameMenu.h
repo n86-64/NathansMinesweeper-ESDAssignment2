@@ -26,5 +26,6 @@ public:
 	int  retrieveMenuSelection();
 
 private:
-	void checkInput(std::string theInput, Vector2D& parameterRefrence); // TODO - Add in system for paramenters
+	// REVIEW - Do we need check input for the game menu? 
+	void checkInput(std::string theInput, Vector2D& parameterRefrence); // TODO - Add in system for paramenters 
 };

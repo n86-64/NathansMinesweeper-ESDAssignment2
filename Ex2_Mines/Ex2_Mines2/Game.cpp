@@ -25,6 +25,7 @@ void Game::startGame()
 		case 3:
 			break;
 		}
+
 	} while (!quitGame);
 	
 }
