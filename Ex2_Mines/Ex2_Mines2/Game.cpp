@@ -1,3 +1,6 @@
+
+#pragma warning (disable : 4996)s
+
 #include "Game.h"
 
 Game::Game()
@@ -37,4 +40,6 @@ void Game::startGame()
 void Game::startGameLoop()
 {
 	theGrid.setUpGrid(gameSettings);
+
+
 }

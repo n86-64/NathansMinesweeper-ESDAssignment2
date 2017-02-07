@@ -20,15 +20,18 @@ void Grid::setUpGrid(Settings gridSettings)
 	placeMines(gridSettings.getDifficultyLevel(), gridArea);
 }
 
+void Grid::destroyGrid()
+{
+	delete[] theGrid;
+}
+
 int Grid::getCellPosition(Vector2D cellPosition)
 {
-	return cellPosition.getX() * (gridWidth * cellPosition.getY());
+	return cellPosition.getX() + (gridWidth * cellPosition.getY());
 }
 
 void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 {
-	bool* mineStatus = nullptr;
-
 	srand(time(NULL));
 	Vector2D minePosition;
 	Vector2D navigationVector;
@@ -40,17 +43,15 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 		minePosition.setX(rand() % gridWidth);
 		minePosition.setY(rand() % gridHeight);
 
-		mineStatus = theGrid[getCellPosition(minePosition)].isAMine;
-
-		if (!(*mineStatus)) 
+		if (!theGrid[getCellPosition(minePosition)].isAMine())
 		{
-			*mineStatus = true;
-
+			theGrid[getCellPosition(minePosition)].placeMineHere();
 			for (int y = minePosition.getY() - 1; y <= minePosition.getY() + 1; y++) 
 			{
 				for (int x = minePosition.getX() - 1; x <= minePosition.getX() + 1; x++)
 				{
-					if (x != minePosition.getX() && y != minePosition.getY()) 
+					// REVIEW - is (x < gridWidth && x < gridHeight) check nessecery?
+					if ((x != minePosition.getX() && y != minePosition.getY()) || (x > 0 && y > 0) || (x < gridWidth && x < gridHeight)) 
 					{
 						navigationVector.setX(x);
 						navigationVector.setY(y);
