@@ -21,6 +21,7 @@ Purpose - The main class object which will process all the game logic.
 #include "gameMenu.h"
 #include "Settings.h"
 #include "settingsMenu.h"
+#include "Grid.h"
 
 class Game {
 public:
@@ -38,4 +39,5 @@ private:
 	gameMenu theGameMenu;
 	settingsMenu theSettingsMenu;
 	Settings gameSettings;
+	Grid theGrid;
 };

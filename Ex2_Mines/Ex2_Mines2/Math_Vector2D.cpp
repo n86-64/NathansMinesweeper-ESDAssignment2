@@ -29,3 +29,9 @@ void Vector2D::setY(int newValue)
 {
 	y = newValue;
 }
+
+void Vector2D::zeroVector()
+{
+	x = 0;
+	y = 0;
+}

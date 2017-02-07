@@ -54,6 +54,9 @@
     <ClCompile Include="Cell.cpp">
       <Filter>Grid System\Cell</Filter>
     </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Grid System\Grid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">

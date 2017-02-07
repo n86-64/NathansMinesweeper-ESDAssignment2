@@ -36,5 +36,5 @@ void Game::startGame()
 
 void Game::startGameLoop()
 {
-
+	theGrid.setUpGrid(gameSettings);
 }
