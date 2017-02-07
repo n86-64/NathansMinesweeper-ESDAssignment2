@@ -4,6 +4,10 @@ Cell::Cell()
 {
 }
 
+Cell::~Cell()
+{
+}
+
 bool Cell::isAMine()
 {
 	return isMine;
@@ -12,6 +16,11 @@ bool Cell::isAMine()
 bool Cell::isCurrentlyFlagged()
 {
 	return isFlagged;
+}
+
+bool Cell::isCurrentlyVisible()
+{
+	return isVisible;
 }
 
 int Cell::getNumberOfAjacentMines()

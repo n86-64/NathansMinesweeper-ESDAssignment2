@@ -18,6 +18,7 @@ Purpose - Contains the logic for the cells that make up the Grid in minesweeper.
 class Cell {
 public:
 	Cell();
+	~Cell();
 
 	bool isAMine();
 	void placeMineHere();
@@ -26,6 +27,7 @@ public:
 	void addToNumberOfAjacentMines();
 
 	bool isCurrentlyFlagged();
+	bool isCurrentlyVisible();
 	void setFlagState(bool newFlagState);
 
 private:

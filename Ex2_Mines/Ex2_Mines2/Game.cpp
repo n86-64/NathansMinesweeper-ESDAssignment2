@@ -1,5 +1,5 @@
 
-#pragma warning (disable : 4996)s
+#pragma warning (disable : 4996)
 
 #include "Game.h"
 
@@ -41,5 +41,10 @@ void Game::startGameLoop()
 {
 	theGrid.setUpGrid(gameSettings);
 
+#ifdef _DEBUG
+	char ter_char = '\0';
+	theGrid.drawGrid(true);
+	scanf("%c", &ter_char);
+#endif // _DEBUG
 
 }

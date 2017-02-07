@@ -21,6 +21,7 @@ Purpose - Contains the interface and logic for the minesweeper grid.
 class Grid {
 public:
 	Grid();
+	~Grid();
 
 	void setUpGrid(Settings gridSettings);
 
@@ -30,7 +31,7 @@ public:
 	bool checkCell(Vector2D cellPosition);
 	int getNumberOfRemainingCells();
 
-	void drawGrid(bool isCheatsEnabled);
+	void drawGrid(bool isCheatsEnabled = false);
 
 
 	void destroyGrid();

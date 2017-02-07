@@ -1,9 +1,14 @@
+#include <iostream>
 #include <cstdlib>
 #include <time.h>
 
 #include "Grid.h"
 
 Grid::Grid()
+{
+}
+
+Grid::~Grid()
 {
 }
 
@@ -15,9 +20,45 @@ void Grid::setUpGrid(Settings gridSettings)
 
 	gridArea = gridWidth * gridHeight;
 
-	theGrid = new Cell[gridArea];
+	if (theGrid != nullptr) 
+	{
+		delete[] theGrid;
+	}
 
+	theGrid = new Cell[gridArea];
 	placeMines(gridSettings.getDifficultyLevel(), gridArea);
+}
+
+void Grid::drawGrid(bool isCheatsEnabled)
+{
+	Vector2D cellToDraw;
+
+	for (int y = 0; y < gridHeight; y++) 
+	{
+		for (int x = 0; x < gridWidth; x++) 
+		{
+			cellToDraw.setX(x);
+			cellToDraw.setY(y);
+
+			
+			if (isCheatsEnabled == false)
+			{
+				std::cout << "*";
+			}
+			else 
+			{
+				if (theGrid[getCellPosition(cellToDraw)].isAMine())
+				{
+					std::cout << "M";
+				}
+				else 
+				{
+					std::cout << theGrid[getCellPosition(cellToDraw)].getNumberOfAjacentMines();
+				}
+			}
+		}
+		std::cout << std::endl;
+	}
 }
 
 void Grid::destroyGrid()
