@@ -6,6 +6,7 @@ Cell::Cell()
 
 Cell::~Cell()
 {
+
 }
 
 bool Cell::isAMine()

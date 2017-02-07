@@ -41,10 +41,13 @@ void Game::startGameLoop()
 {
 	theGrid.setUpGrid(gameSettings);
 
-#ifdef _DEBUG
-	char ter_char = '\0';
-	theGrid.drawGrid(true);
-	scanf("%c", &ter_char);
-#endif // _DEBUG
+
+
+
+//
+//#ifdef _DEBUG
+//	char ter_char = '\0';
+//	theGrid.drawGrid(true);
+//#endif // _DEBUG
 
 }

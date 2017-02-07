@@ -37,7 +37,7 @@ public:
 	void destroyGrid();
 
 private:
-	Cell* theGrid = nullptr;
+	Cell* theCellArray = nullptr;
 	int gridWidth = 0;
 	int gridHeight = 0;
 	int noOfHiddenCells = 0;
