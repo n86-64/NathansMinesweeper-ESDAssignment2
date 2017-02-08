@@ -41,8 +41,10 @@ void Game::startGameLoop()
 {
 	theGrid.setUpGrid(gameSettings);
 
+	theGrid.drawGrid();
 
 
+	// TODO - Add the game loop here. 
 
 //
 //#ifdef _DEBUG

@@ -27,6 +27,7 @@ void Grid::setUpGrid(Settings gridSettings)
 
 void Grid::drawGrid(bool isCheatsEnabled)
 {
+	Cell* currentCell = nullptr;
 	Vector2D cellToDraw;
 
 	for (int y = 0; y < gridHeight; y++) 
@@ -36,19 +37,21 @@ void Grid::drawGrid(bool isCheatsEnabled)
 		{
 			cellToDraw.setX(x);
 
-			if (isCheatsEnabled == false)
+			currentCell = &theCellArray[getCellPosition(cellToDraw)];
+
+			if (currentCell->isCurrentlyVisible() || isCheatsEnabled == false)
 			{
 				std::cout << "*";
 			}
 			else 
 			{
-				if (theCellArray[getCellPosition(cellToDraw)].isAMine())
+				if (currentCell->isAMine())
 				{
 					std::cout << "M";
 				}
 				else 
 				{
-					std::cout << theCellArray[getCellPosition(cellToDraw)].getNumberOfAjacentMines();
+					std::cout << currentCell->getNumberOfAjacentMines();
 				}
 			}
 		}
