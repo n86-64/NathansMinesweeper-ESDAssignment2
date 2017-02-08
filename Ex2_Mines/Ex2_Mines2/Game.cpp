@@ -1,4 +1,3 @@
-
 #pragma warning (disable : 4996)
 
 #include <locale>
@@ -140,19 +139,18 @@ void Game::startGameLoop()
 
 		cellToCheck.resetVector();
 	}
-	
-	// do results check and subsequent messages here. 
+	 
 	system("cls");
 	theGrid.drawGrid();
 
 	switch (gameState) 
 	{
 	case GAMESTATE_LOSS:
-		std::cout << "BOOOOOOOOOOOOOOOOMMMMMMMMMMMMMMMMMM"
+		std::cout << "BOOOOOOOOOOOOOOOOMMMMMMMMMMMMMMMMMM" << std::endl
 			<< "No you hit a mine "
 			<< "Game Over"
 			<< std::endl;
-		std::cout << "Press enter to return to the main menu ";
+		std::cout << "Press enter to return to the main menu - ";
 		getchar();
 		break;
 
