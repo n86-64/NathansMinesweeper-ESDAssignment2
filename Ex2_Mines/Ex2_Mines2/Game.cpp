@@ -157,6 +157,7 @@ void Game::startGameLoop()
 	case GAMESTATE_WIN:
 		std::cout << "Well done you cleared the board"
 			<< std::endl;
+
 		if (gameSettings.getClassicModeState()) 
 		{
 			endTime = std::chrono::system_clock::now();
