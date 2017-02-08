@@ -43,6 +43,7 @@ void Game::startGameLoop()
 {
 	Vector2D cellToCheck;
 	GameState gameState = GAMESTATE_PLAYING;
+	std::chrono::duration<double> timeResult;
 
 	bool playingGame = true;
 	bool cheats = false;
@@ -87,13 +88,23 @@ void Game::startGameLoop()
 				switch (playerInput[0]) 
 				{
 				case 'F':
-					theGrid.flagCell(cellToCheck);
+					if (theGrid.getNoOfRemainingFlags() != 0) 
+					{
+						theGrid.flagCell(cellToCheck);
+					}
+					else 
+					{
+						std::cout << "You dont have any flags left."
+							<< "Remove a flag if you wish to place one" << std::endl
+							<< "Press enter to continue - ";
+						getchar();
+					}
 					break;
 				case 'R':
 					theGrid.unFlagCell(cellToCheck);
 					break;
 				case 'G':
-					theGrid.checkCell(cellToCheck, gameState);
+					theGrid.checkCell(cellToCheck, gameState,gameSettings.getClassicModeState());
 					if (gameState != GAMESTATE_PLAYING) 
 					{
 						playingGame = false;
@@ -131,15 +142,39 @@ void Game::startGameLoop()
 	}
 	
 	// do results check and subsequent messages here. 
+	system("cls");
+	theGrid.drawGrid();
 
+	switch (gameState) 
+	{
+	case GAMESTATE_LOSS:
+		std::cout << "BOOOOOOOOOOOOOOOOMMMMMMMMMMMMMMMMMM"
+			<< "No you hit a mine "
+			<< "Game Over"
+			<< std::endl;
+		std::cout << "Press enter to return to the main menu ";
+		getchar();
+		break;
 
-
-
+	case GAMESTATE_WIN:
+		std::cout << "Well done you cleared the board"
+			<< std::endl;
+		if (gameSettings.getClassicModeState()) 
+		{
+			endTime = std::chrono::system_clock::now();
+			timeResult = endTime - startTime;
+			std::cout << "You cleared the board in "
+				<< std::round(timeResult.count())
+				<< std::endl
+				<< "Press enter to return to the main menu";
+			getchar();
+		}
+		break;
+	}
 
 	// ensures no memory leaks when the application is terminated. 
 	theGrid.destroyGrid();
-
-	// TODO - Add the game loop here. 
+	return;
 }
 
 bool Game::checkInput(std::string theInput, Vector2D& parameterValues)

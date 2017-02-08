@@ -41,6 +41,7 @@ void Grid::flagCell(Vector2D cellPosition)
 		else
 		{
 			cellToFlag->setFlagState(true);
+			numberOfFlags--;
 		}
 	}
 	else 
@@ -70,6 +71,7 @@ void Grid::unFlagCell(Vector2D cellPosition)
 		else
 		{
 			cellToUnFlag->setFlagState(false);
+			numberOfFlags++;
 		}
 	}
 	else
@@ -82,7 +84,12 @@ void Grid::unFlagCell(Vector2D cellPosition)
 	return;
 }
 
-void Grid::checkCell(Vector2D cellPosition, GameState& currentState)
+int Grid::getNoOfRemainingFlags()
+{
+	return numberOfFlags;
+}
+
+void Grid::checkCell(Vector2D cellPosition, GameState& currentState, bool classicMode)
 {
 	cellPosition.correctVector();
 	Cell* currentCell = nullptr;
@@ -90,17 +97,24 @@ void Grid::checkCell(Vector2D cellPosition, GameState& currentState)
 	if ((cellPosition.getX() < gridWidth) && (cellPosition.getY() < gridHeight))
 	{
 		currentCell = &theCellArray[getCellPosition(cellPosition)];
-		if (currentCell->isCurrentlyVisible())
+		if (!currentCell->isCurrentlyVisible())
 		{
 			currentCell->revealCell();
+			noOfHiddenCells--;
 
 			if (currentCell->isAMine())
 			{
 				currentState = GAMESTATE_LOSS;
 			}
-			else if (currentCell->getNumberOfAjacentMines() == 0)
+			else if (currentCell->getNumberOfAjacentMines() == 0 && classicMode)
 			{
 				// reveal all ajacent mines here. 
+
+			}
+
+			if (noOfHiddenCells == 0) 
+			{
+				currentState = GAMESTATE_WIN;
 			}
 		}
 		else
@@ -115,6 +129,11 @@ void Grid::checkCell(Vector2D cellPosition, GameState& currentState)
 			<< "Press enter to continue - ";
 		getchar();
 	}
+}
+
+int Grid::getNumberOfRemainingCells()
+{
+	return noOfHiddenCells;
 }
 
 void Grid::drawGrid(bool isCheatsEnabled)
@@ -175,6 +194,7 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 	Vector2D navigationVector;
 	
 	numberOfFlags = numberOfMines = ((int)difficultyFactor * gridArea) / 10;
+	noOfHiddenCells = gridArea - numberOfMines;
 
 	for (int i = numberOfMines; i != 0; i--) 
 	{

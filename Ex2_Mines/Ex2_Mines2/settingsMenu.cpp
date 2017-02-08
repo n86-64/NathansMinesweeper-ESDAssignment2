@@ -4,7 +4,6 @@
 // TODO - consider a function to print some of these error messages
 
 
-
 settingsMenu::settingsMenu(Settings* parameterData)
 {
 	settingsToModify = parameterData;
