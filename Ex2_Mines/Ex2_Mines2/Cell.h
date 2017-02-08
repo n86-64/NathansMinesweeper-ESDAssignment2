@@ -29,6 +29,7 @@ public:
 	bool isCurrentlyFlagged();
 	bool isCurrentlyVisible();
 	void setFlagState(bool newFlagState);
+	void revealCell();
 
 private:
 	bool isMine = false;

@@ -17,6 +17,7 @@ Purpose - Contains the interface and logic for the minesweeper grid.
 
 #include "Cell.h"
 #include "Settings.h"
+#include "GameState.h"
 
 class Grid {
 public:
@@ -28,7 +29,7 @@ public:
 	void flagCell(Vector2D cellPosition);
 	void unFlagCell(Vector2D cellPosition);
 
-	bool checkCell(Vector2D cellPosition);
+	void checkCell(Vector2D cellPosition, GameState& currentState);
 	int getNumberOfRemainingCells();
 
 	void drawGrid(bool isCheatsEnabled = false);

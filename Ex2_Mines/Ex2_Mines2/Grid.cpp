@@ -25,6 +25,54 @@ void Grid::setUpGrid(Settings gridSettings)
 	placeMines(gridSettings.getDifficultyLevel(), gridArea);
 }
 
+void Grid::flagCell(Vector2D cellPosition)
+{
+	if (theCellArray[getCellPosition(cellPosition)].isCurrentlyFlagged()) 
+	{
+		std::cout << "This position is already flagged" << std::endl;
+	}
+	else 
+	{
+		theCellArray[getCellPosition(cellPosition)].setFlagState(true);
+	}
+	return;
+}
+
+void Grid::unFlagCell(Vector2D cellPosition)
+{
+	if (!theCellArray[getCellPosition(cellPosition)].isCurrentlyFlagged())
+	{
+		std::cout << "This position dosent have a flag on it." << std::endl;
+	}
+	else
+	{
+		theCellArray[getCellPosition(cellPosition)].setFlagState(false);
+	}
+	return;
+}
+
+void Grid::checkCell(Vector2D cellPosition, GameState& currentState)
+{
+	Cell* currentCell = &theCellArray[getCellPosition(cellPosition)];
+	if (currentCell->isCurrentlyVisible()) 
+	{
+		currentCell->revealCell();
+
+		if (currentCell->isAMine()) 
+		{
+			currentState = GAMESTATE_LOSS;
+		}
+		else if (currentCell->getNumberOfAjacentMines() == 0) 
+		{
+			// reveal all ajacent mines here. 
+		}
+	}
+	else 
+	{
+		std::cout << "You have already selected this cell." << std::endl;
+	}
+}
+
 void Grid::drawGrid(bool isCheatsEnabled)
 {
 	Cell* currentCell = nullptr;
@@ -39,7 +87,11 @@ void Grid::drawGrid(bool isCheatsEnabled)
 
 			currentCell = &theCellArray[getCellPosition(cellToDraw)];
 
-			if (currentCell->isCurrentlyVisible() || isCheatsEnabled == false)
+			if (currentCell->isCurrentlyFlagged())
+			{
+				std::cout << "F";
+			}
+			else if ((!currentCell->isCurrentlyVisible()) && isCheatsEnabled == false)
 			{
 				std::cout << "*";
 			}
@@ -57,12 +109,14 @@ void Grid::drawGrid(bool isCheatsEnabled)
 		}
 		std::cout << std::endl;
 	}
+	return;
 }
 
 void Grid::destroyGrid()
 {
 	delete[] theCellArray;
 	theCellArray = nullptr;
+	return;
 }
 
 int Grid::getCellPosition(Vector2D cellPosition)
@@ -105,4 +159,5 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 		minePosition.zeroVector();
 		navigationVector.zeroVector();
 	}
+	return;
 }

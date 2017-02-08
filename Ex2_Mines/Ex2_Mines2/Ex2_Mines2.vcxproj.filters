@@ -80,5 +80,8 @@
     <ClInclude Include="Grid.h">
       <Filter>Grid System\Grid</Filter>
     </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -44,4 +44,9 @@ void Cell::setFlagState(bool newFlagState)
 	isFlagged = newFlagState;
 }
 
+void Cell::revealCell()
+{
+	isVisible = true;
+}
+
 

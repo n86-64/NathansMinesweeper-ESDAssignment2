@@ -116,7 +116,7 @@ bool settingsMenu::checkInput(std::string input, int& parameterValue)
 	{
 		if (input.length() >= 3)
 		{
-			for (int i = 1; i < input.length(); i++)
+			for (int i = 1; i < (int)input.length(); i++)
 			{
 				if (whitespaces <= 1)
 				{

@@ -15,13 +15,16 @@ Purpose - The main class object which will process all the game logic.
 
 
 #include <iostream>
+#include <chrono>
 #include <string>
 #include <time.h>
 
+#include "GameState.h"
 #include "gameMenu.h"
 #include "Settings.h"
 #include "settingsMenu.h"
 #include "Grid.h"
+
 
 class Game {
 public:
@@ -32,7 +35,8 @@ public:
 
 private: 
 	void startGameLoop();
-	void checkInput(int numberOfParams);
+	void endSession();
+	bool checkInput(std::string theInput, Vector2D& parameterValues);
 	void Quit(); 
 
 private:
@@ -40,4 +44,6 @@ private:
 	settingsMenu theSettingsMenu;
 	Settings gameSettings;
 	Grid theGrid;
+
+	std::chrono::time_point<std::chrono::system_clock> startTime;
 };
