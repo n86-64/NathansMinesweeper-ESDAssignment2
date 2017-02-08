@@ -140,20 +140,30 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 		if (!theCellArray[getCellPosition(minePosition)].isAMine())
 		{
 			theCellArray[getCellPosition(minePosition)].placeMineHere();
-			for (int y = minePosition.getY() - 1; y <= minePosition.getY() + 1; y++) 
+			for (int y = minePosition.getY() - 1; y < minePosition.getY() + 2; y++) 
 			{
-				for (int x = minePosition.getX() - 1; x <= minePosition.getX() + 1; x++)
+				for (int x = minePosition.getX() - 1; x < minePosition.getX() + 2; x++)
 				{
 					// REVIEW - is (x < gridWidth && x < gridHeight) check nessecery?
-					if ((x != minePosition.getX() && y != minePosition.getY()) && (x >= 0 && y >= 0) && (x < gridWidth && y < gridHeight)) 
+
+					if (!((x == minePosition.getX() && y == minePosition.getY()) || (x < 0 || y < 0) || (x >= gridWidth || y >= gridHeight))) 
 					{
 						navigationVector.setX(x);
 						navigationVector.setY(y);
 
 						theCellArray[getCellPosition(navigationVector)].addToNumberOfAjacentMines();
 					}
+
+
+					//if ((!(x != minePosition.getX()) && (y != minePosition.getY())) && (x >= 0 && y >= 0) && (x < gridWidth && y < gridHeight)) 
+					//{
+					//}
 				}
 			}
+		}
+		else 
+		{
+			i++;
 		}
 
 		minePosition.zeroVector();
