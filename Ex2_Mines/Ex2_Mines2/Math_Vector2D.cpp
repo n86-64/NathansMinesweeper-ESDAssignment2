@@ -30,8 +30,14 @@ void Vector2D::setY(int newValue)
 	y = newValue;
 }
 
-void Vector2D::zeroVector()
+void Vector2D::resetVector()
 {
 	x = 0;
 	y = 0;
+}
+
+void Vector2D::correctVector()
+{
+	x -= 1;
+	y -= 1;
 }

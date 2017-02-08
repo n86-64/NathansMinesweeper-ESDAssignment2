@@ -69,9 +69,9 @@ void Game::startGameLoop()
 		          << "Press G followed by a coordinate in order to guess a position" << std::endl
 		          << "Press Q to quit this current session" << std::endl;
 
-		std::cout << "Enter an X value between 0 and " << gameSettings.getGridWidth() - 1
+		std::cout << "Enter an X value between 1 and " << gameSettings.getGridWidth()
 			<< ". Along with"
-			<< " a Y value between 0 and " << gameSettings.getGridHeight() - 1
+			<< " a Y value between 1 and " << gameSettings.getGridHeight()
 			<< std::endl;
 
 		do 
@@ -100,22 +100,19 @@ void Game::startGameLoop()
 					}
 					break;
 				case 'Q':
-					std::cout << "Returning you to the main menu." << std::endl;
+					std::cout << "Returning you to the main menu." << std::endl
+						<< "Press enter to continue - ";
+					getchar();
 					playingGame = false;
 					break;
 				case 'Z':
-					if (!cheats) 
-					{
-						cheats = true;
-					}
-					else 
-					{
-						cheats = false;
-					}
+					cheats = !cheats;
 					break;
 				default:
 					std::cout << "Error you have entered an invalid option. "
-						      << "Please enter a valid selection. " << std::endl;
+						      << "Please enter a valid selection. " << std::endl
+						      << "Press enter to continue - ";
+					getchar();
 					isCorrectInput = false;
 				}
 			}
@@ -123,13 +120,21 @@ void Game::startGameLoop()
 			{
 				std::cout << "Error you have entered invalid parameters. "
 					<< "Please enter a valid selection. " << std::endl;
+				std::cout << "Press enter to continue - ";
+				getchar();
 				isCorrectInput = false;
 			}
 
 		} while (!isCorrectInput);
 
-		cellToCheck.zeroVector();
+		cellToCheck.resetVector();
 	}
+	
+	// do results check and subsequent messages here. 
+
+
+
+
 
 	// ensures no memory leaks when the application is terminated. 
 	theGrid.destroyGrid();
@@ -141,7 +146,7 @@ bool Game::checkInput(std::string theInput, Vector2D& parameterValues)
 {
 	std::string valueBuffer;
 	int whitespaces = 0;
-	bool returnValue = true;
+	bool returnValue = false;
 
 
 	if ((theInput[0] == 'Q' || theInput[0] == 'Z') && theInput.length() == 1) 
@@ -161,13 +166,8 @@ bool Game::checkInput(std::string theInput, Vector2D& parameterValues)
 					case ' ':
 						if (!valueBuffer.empty()) 
 						{
-							switch (whitespaces) 
-							{
-							case 1:
-								parameterValues.setX(std::stoi(valueBuffer));
-								valueBuffer.clear();
-								break;
-							}
+							parameterValues.setX(std::stoi(valueBuffer));
+							valueBuffer.clear();
 						}
 						whitespaces++;
 
@@ -177,27 +177,16 @@ bool Game::checkInput(std::string theInput, Vector2D& parameterValues)
 						{
 							valueBuffer += theInput[i];
 						}
-						else 
-						{
-							returnValue = false;
-						}
 					}
-				}
-				else 
-				{
-					returnValue = false;
 				}
 			}
 		}
 	}
 
-	if (valueBuffer.empty() && theInput.length() > 1) 
-	{
-		returnValue = false;
-	}
-	else if (!valueBuffer.empty())
+	if (!valueBuffer.empty() && (parameterValues.getX() != 0))
 	{
 		parameterValues.setY(std::stoi(valueBuffer));
+		returnValue = true;
 	}
 
 	return returnValue;

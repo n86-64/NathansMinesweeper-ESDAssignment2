@@ -24,7 +24,8 @@ public:
 	void setX(int newValue);
 	void setY(int newValue);
 
-	void zeroVector();
+	void resetVector();
+	void correctVector();
 
 private:
 	// REVIEW - should be constructed to -1 by default? 

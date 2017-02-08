@@ -20,56 +20,100 @@ void Grid::setUpGrid(Settings gridSettings)
 
 	gridArea = gridWidth * gridHeight;
 
-	// REVIEW - Make this a construction function or make the gridArea in scope to ensure it is constructed correctly. 
 	theCellArray = new Cell[gridArea];
 	placeMines(gridSettings.getDifficultyLevel(), gridArea);
 }
 
 void Grid::flagCell(Vector2D cellPosition)
 {
-	if (theCellArray[getCellPosition(cellPosition)].isCurrentlyFlagged()) 
+	cellPosition.correctVector();
+	Cell* cellToFlag = nullptr;
+
+	if ((cellPosition.getX() < gridWidth) && (cellPosition.getY() < gridHeight)) 
 	{
-		std::cout << "This position is already flagged" << std::endl;
+		cellToFlag = &theCellArray[getCellPosition(cellPosition)];
+		if (cellToFlag->isCurrentlyFlagged())
+		{
+			std::cout << "This position is already flagged" << std::endl;
+			std::cout << "Press enter to continue - ";
+			getchar();
+		}
+		else
+		{
+			cellToFlag->setFlagState(true);
+		}
 	}
 	else 
 	{
-		theCellArray[getCellPosition(cellPosition)].setFlagState(true);
+		std::cout << "This position is out of range. Please enter a value"
+			<< " within range." << std::endl
+			<< "Press enter to continue - ";
+		getchar();
 	}
 	return;
 }
 
 void Grid::unFlagCell(Vector2D cellPosition)
 {
-	if (!theCellArray[getCellPosition(cellPosition)].isCurrentlyFlagged())
+	cellPosition.correctVector();
+	Cell* cellToUnFlag = nullptr;
+
+	if ((cellPosition.getX() < gridWidth) && (cellPosition.getY() < gridHeight))
 	{
-		std::cout << "This position dosent have a flag on it." << std::endl;
+		cellToUnFlag = &theCellArray[getCellPosition(cellPosition)];
+		if (!cellToUnFlag->isCurrentlyFlagged())
+		{
+			std::cout << "This position dosent have a flag on it."
+				<< "Press enter to continue";
+			getchar();
+		}
+		else
+		{
+			cellToUnFlag->setFlagState(false);
+		}
 	}
 	else
 	{
-		theCellArray[getCellPosition(cellPosition)].setFlagState(false);
+		std::cout << "This position is out of range. Please enter a value"
+				<< " within range." << std::endl
+				<< "Press enter to continue - ";
+		getchar();
 	}
 	return;
 }
 
 void Grid::checkCell(Vector2D cellPosition, GameState& currentState)
 {
-	Cell* currentCell = &theCellArray[getCellPosition(cellPosition)];
-	if (currentCell->isCurrentlyVisible()) 
+	cellPosition.correctVector();
+	Cell* currentCell = nullptr;
+	
+	if ((cellPosition.getX() < gridWidth) && (cellPosition.getY() < gridHeight))
 	{
-		currentCell->revealCell();
+		currentCell = &theCellArray[getCellPosition(cellPosition)];
+		if (currentCell->isCurrentlyVisible())
+		{
+			currentCell->revealCell();
 
-		if (currentCell->isAMine()) 
-		{
-			currentState = GAMESTATE_LOSS;
+			if (currentCell->isAMine())
+			{
+				currentState = GAMESTATE_LOSS;
+			}
+			else if (currentCell->getNumberOfAjacentMines() == 0)
+			{
+				// reveal all ajacent mines here. 
+			}
 		}
-		else if (currentCell->getNumberOfAjacentMines() == 0) 
+		else
 		{
-			// reveal all ajacent mines here. 
+			std::cout << "You have already selected this cell." << std::endl;
 		}
 	}
 	else 
 	{
-		std::cout << "You have already selected this cell." << std::endl;
+		std::cout << "This position is out of range. Please enter a value"
+			<< " within range." << std::endl
+			<< "Press enter to continue - ";
+		getchar();
 	}
 }
 
@@ -144,8 +188,6 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 			{
 				for (int x = minePosition.getX() - 1; x < minePosition.getX() + 2; x++)
 				{
-					// REVIEW - is (x < gridWidth && x < gridHeight) check nessecery?
-
 					if (!((x == minePosition.getX() && y == minePosition.getY()) || (x < 0 || y < 0) || (x >= gridWidth || y >= gridHeight))) 
 					{
 						navigationVector.setX(x);
@@ -153,11 +195,6 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 
 						theCellArray[getCellPosition(navigationVector)].addToNumberOfAjacentMines();
 					}
-
-
-					//if ((!(x != minePosition.getX()) && (y != minePosition.getY())) && (x >= 0 && y >= 0) && (x < gridWidth && y < gridHeight)) 
-					//{
-					//}
 				}
 			}
 		}
@@ -166,8 +203,8 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 			i++;
 		}
 
-		minePosition.zeroVector();
-		navigationVector.zeroVector();
+		minePosition.resetVector();
+		navigationVector.resetVector();
 	}
 	return;
 }
