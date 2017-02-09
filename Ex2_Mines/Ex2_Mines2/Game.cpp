@@ -69,7 +69,8 @@ void Game::startGameLoop()
 	{
 		system("cls");
 		theGrid.drawGrid(cheats);
-		std::cout << "Press F followed by a coordinate to flag a position (F <Xpos> <yPos>)" << std::endl
+		std::cout << std::endl
+			<< "Press F followed by a coordinate to flag a position (F <Xpos> <yPos>)" << std::endl
 			<< "You have " << theGrid.getNoOfRemainingFlags() << " flags remaining" << std::endl
 		          << "Press R followed by a coordinate in order to remove a flag. (R <Xpos> <yPos>)" << std::endl
 		          << "Press G followed by a coordinate in order to guess a position (G <Xpos> <yPos>)" << std::endl
@@ -206,6 +207,7 @@ bool Game::checkInput(std::string theInput, Vector2D& parameterValues)
 		{
 			for (int i = 1; i < (int)theInput.length(); i++) 
 			{
+				// REVIEW - Do we need the whitespaces condition as there are no other checks as we set the value after the secound whitespace. Hence making this check redundant?
 				if (whitespaces <= 2) 
 				{
 					switch (theInput[i])
