@@ -52,7 +52,7 @@ void Game::startGameLoop()
 	system("cls");
 	theGrid.setUpGrid(gameSettings);
 	std::cout << "Here is your grid, "
-		<< "You need to find " << theGrid.getNumberOfMines() << " Mines " 
+		<< "You need to find " << theGrid.getNumberOfMines() << " Mines " << std::endl
 		<<"Good luck: " 
 		<< std::endl;
 	theGrid.drawGrid();

@@ -28,6 +28,7 @@ void settingsMenu::printMenu()
 			<< (int)settingsToModify->getClassicModeState()
 			<< ")" << std::endl
 			<< "D - Difficulty Level (1 = easy, 2 = medium, 3 = hard) (Current Value = " << (int)settingsToModify->getDifficultyLevel() << ")" << std::endl
+			<< "R - Restore default settings " << std::endl
 			<< "B - Go Back to the main menu" << std::endl;
 
 
@@ -82,6 +83,9 @@ void settingsMenu::retrieveMenuSelection(bool& inMenu)
 					settingsToModify->setDifficultyLevel(parameterValue);
 				}
 				break;
+			case 'R':
+				settingsToModify->restoreDefaults();
+				break;
 			case 'B':
 				inMenu = false;
 				break;
@@ -107,7 +111,7 @@ bool settingsMenu::checkInput(std::string input, int& parameterValue)
 	int whitespaces = 0;
 	std::string valueBuffer;
 	
-	if (input[0] == 'B') 
+	if (input[0] == 'B' || input[0] == 'R') 
 	{
 		return true;
 	}
