@@ -1,16 +1,15 @@
 #include <iostream>
+#include <vector>
 #include <cstdlib>
 #include <time.h>
 
 #include "Grid.h"
 
 Grid::Grid()
-{
-}
+{}
 
 Grid::~Grid()
-{
-}
+{}
 
 void Grid::setUpGrid(Settings gridSettings)
 {
@@ -109,7 +108,7 @@ void Grid::checkCell(Vector2D cellPosition, GameState& currentState, bool classi
 			else if (currentCell->getNumberOfAjacentMines() == 0 && classicMode)
 			{
 				// reveal all ajacent mines here. 
-
+				checkAjacentMines(cellPosition);
 			}
 
 			if (noOfHiddenCells == 0) 
@@ -119,7 +118,9 @@ void Grid::checkCell(Vector2D cellPosition, GameState& currentState, bool classi
 		}
 		else
 		{
-			std::cout << "You have already selected this cell." << std::endl;
+			std::cout << "You have already selected this cell." << std::endl
+				<< "Press enter to continue - ";
+			getchar();
 		}
 	}
 	else 
@@ -185,6 +186,51 @@ void Grid::destroyGrid()
 int Grid::getCellPosition(Vector2D cellPosition)
 {
 	return cellPosition.getX() + (gridWidth * cellPosition.getY());
+}
+
+void Grid::checkAjacentMines(Vector2D initialCellPosition)
+{
+	Vector2D currentPos;
+	Vector2D valueBuffer;
+
+	std::vector<Vector2D> positonList;
+	positonList.push_back(initialCellPosition);
+
+	while (!positonList.empty()) 
+	{
+		valueBuffer = positonList.back();
+		positonList.pop_back();
+
+		for (int y = valueBuffer.getY() - 1; y < valueBuffer.getY() + 2; y++) 
+		{
+			for (int x = valueBuffer.getX() - 1; x < valueBuffer.getX() + 2; x++) 
+			{
+				if (!((x == valueBuffer.getX() && y == valueBuffer.getY()) || (x < 0 || y < 0) || (x >= gridWidth || y >= gridHeight)))
+				{
+					currentPos.setX(x);
+					currentPos.setY(y);
+
+					if (!theCellArray[getCellPosition(currentPos)].isCurrentlyVisible()) 
+					{
+						if (!theCellArray[getCellPosition(currentPos)].isAMine()) 
+						{
+							theCellArray[getCellPosition(currentPos)].revealCell();
+							noOfHiddenCells--;
+
+							if (theCellArray[getCellPosition(currentPos)].getNumberOfAjacentMines() == 0) 
+							{
+								positonList.push_back(currentPos);
+							}
+						}
+					}
+				}
+				currentPos.resetVector();
+			}
+		}
+	}
+
+
+	positonList.clear();
 }
 
 void Grid::placeMines(Difficulty difficultyFactor, int gridArea)

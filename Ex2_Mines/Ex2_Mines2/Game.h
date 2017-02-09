@@ -17,7 +17,6 @@ Purpose - The main class object which will process all the game logic.
 #include <iostream>
 #include <chrono>
 #include <string>
-#include <time.h>
 
 #include "GameState.h"
 #include "gameMenu.h"
@@ -35,9 +34,8 @@ public:
 
 private: 
 	void startGameLoop();
-	void endSession();
 	bool checkInput(std::string theInput, Vector2D& parameterValues);
-	void Quit(); 
+
 
 private:
 	gameMenu theGameMenu;

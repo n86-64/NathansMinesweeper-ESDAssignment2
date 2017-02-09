@@ -5,12 +5,10 @@
 
 Game::Game()
 	: theSettingsMenu(&gameSettings)
-{
-}
+{}
 
 Game::~Game() 
-{
-}
+{}
 
 void Game::startGame()
 {
@@ -64,9 +62,9 @@ void Game::startGameLoop()
 	{
 		system("cls");
 		theGrid.drawGrid(cheats);
-		std::cout << "Press F followed by a coordinate to flag a position" << std::endl
-		          << "Press R followed by a coordinate in order to remove a flag. " << std::endl
-		          << "Press G followed by a coordinate in order to guess a position" << std::endl
+		std::cout << "Press F followed by a coordinate to flag a position (F <Xpos> <yPos>)" << std::endl
+		          << "Press R followed by a coordinate in order to remove a flag. (R <Xpos> <yPos>)" << std::endl
+		          << "Press G followed by a coordinate in order to guess a position (G <Xpos> <yPos>)" << std::endl
 		          << "Press Q to quit this current session" << std::endl;
 
 		std::cout << "Enter an X value between 1 and " << gameSettings.getGridWidth()
@@ -164,6 +162,7 @@ void Game::startGameLoop()
 			timeResult = endTime - startTime;
 			std::cout << "You cleared the board in "
 				<< std::round(timeResult.count())
+				<< " secounds"
 				<< std::endl
 				<< "Press enter to return to the main menu";
 			getchar();
@@ -171,7 +170,6 @@ void Game::startGameLoop()
 		break;
 	}
 
-	// ensures no memory leaks when the application is terminated. 
 	theGrid.destroyGrid();
 	return;
 }
