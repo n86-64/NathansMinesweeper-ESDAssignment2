@@ -190,6 +190,7 @@ int Grid::getCellPosition(Vector2D cellPosition)
 
 void Grid::checkAjacentMines(Vector2D initialCellPosition)
 {
+	Cell* currentCell = nullptr;
 	Vector2D currentPos;
 	Vector2D valueBuffer;
 
@@ -210,14 +211,16 @@ void Grid::checkAjacentMines(Vector2D initialCellPosition)
 					currentPos.setX(x);
 					currentPos.setY(y);
 
-					if (!theCellArray[getCellPosition(currentPos)].isCurrentlyVisible()) 
+					currentCell = &theCellArray[getCellPosition(currentPos)];
+
+					if (!currentCell->isCurrentlyVisible()) 
 					{
-						if (!theCellArray[getCellPosition(currentPos)].isAMine()) 
+						if (!currentCell->isAMine())
 						{
-							theCellArray[getCellPosition(currentPos)].revealCell();
+							currentCell->revealCell();
 							noOfHiddenCells--;
 
-							if (theCellArray[getCellPosition(currentPos)].getNumberOfAjacentMines() == 0) 
+							if (currentCell->getNumberOfAjacentMines() == 0)
 							{
 								positonList.push_back(currentPos);
 							}
