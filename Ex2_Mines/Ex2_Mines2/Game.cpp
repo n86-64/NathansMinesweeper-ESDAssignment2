@@ -70,6 +70,7 @@ void Game::startGameLoop()
 		system("cls");
 		theGrid.drawGrid(cheats);
 		std::cout << "Press F followed by a coordinate to flag a position (F <Xpos> <yPos>)" << std::endl
+			<< "You have " << theGrid.getNoOfRemainingFlags() << " flags remaining" << std::endl
 		          << "Press R followed by a coordinate in order to remove a flag. (R <Xpos> <yPos>)" << std::endl
 		          << "Press G followed by a coordinate in order to guess a position (G <Xpos> <yPos>)" << std::endl
 		          << "Press Q to quit this current session" << std::endl;
