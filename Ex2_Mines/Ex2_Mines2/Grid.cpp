@@ -169,21 +169,21 @@ void Grid::drawGrid(bool isCheatsEnabled)
 
 			if (currentCell->isCurrentlyFlagged())
 			{
-				std::cout << "F";
+				std::cout << "F ";
 			}
 			else if ((!currentCell->isCurrentlyVisible()) && isCheatsEnabled == false)
 			{
-				std::cout << "*";
+				std::cout << "* ";
 			}
 			else 
 			{
 				if (currentCell->isAMine())
 				{
-					std::cout << "M";
+					std::cout << "M ";
 				}
 				else 
 				{
-					std::cout << currentCell->getNumberOfAjacentMines();
+					std::cout << currentCell->getNumberOfAjacentMines() << " ";
 				}
 			}
 		}
@@ -229,10 +229,8 @@ void Grid::checkAjacentMines(Vector2D initialCellPosition)
 
 					currentCell = &theCellArray[getCellPosition(currentPos)];
 
-					if (!currentCell->isCurrentlyVisible()) 
+					if ((!currentCell->isCurrentlyVisible()) && (!currentCell->isAMine()))
 					{
-						if (!currentCell->isAMine())
-						{
 							currentCell->revealCell();
 							noOfHiddenCells--;
 
@@ -240,7 +238,6 @@ void Grid::checkAjacentMines(Vector2D initialCellPosition)
 							{
 								positonList.push_back(currentPos);
 							}
-						}
 					}
 				}
 				currentPos.resetVector();
@@ -257,6 +254,7 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 	srand(time(NULL));
 	Vector2D minePosition;
 	Vector2D navigationVector;
+	Cell* currentCell = nullptr; // TODO - add pointer here to do conditional checks on the cell 
 	
 	numberOfFlags = numberOfMines = ((int)difficultyFactor * gridArea) / 10;
 	noOfHiddenCells = gridArea - numberOfMines;
@@ -266,9 +264,11 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 		minePosition.setX(rand() % gridWidth);
 		minePosition.setY(rand() % gridHeight);
 
-		if (!theCellArray[getCellPosition(minePosition)].isAMine())
+		currentCell = &theCellArray[getCellPosition(minePosition)];
+
+		if (!currentCell->isAMine())
 		{
-			theCellArray[getCellPosition(minePosition)].placeMineHere();
+			currentCell->placeMineHere();
 			for (int y = minePosition.getY() - 1; y < minePosition.getY() + 2; y++) 
 			{
 				for (int x = minePosition.getX() - 1; x < minePosition.getX() + 2; x++)
