@@ -84,4 +84,7 @@
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Minesweeper_Structure.cd" />
+  </ItemGroup>
 </Project>

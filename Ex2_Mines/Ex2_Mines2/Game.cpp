@@ -94,7 +94,12 @@ void Game::startGameLoop()
 				case 'F':
 					if (theGrid.getNoOfRemainingFlags() != 0) 
 					{
-						theGrid.flagCell(cellToCheck);
+						theGrid.flagCell(cellToCheck,gameState);
+
+						if (gameState == GAMESTATE_WIN) 
+						{
+							playingGame = false; 
+						}
 					}
 					else 
 					{

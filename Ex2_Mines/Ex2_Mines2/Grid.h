@@ -26,7 +26,7 @@ public:
 
 	void setUpGrid(Settings gridSettings);
 
-	void flagCell(Vector2D cellPosition);
+	void flagCell(Vector2D cellPosition, GameState& theGameState);
 	void unFlagCell(Vector2D cellPosition);
 	void revealMines();
 

@@ -19,11 +19,17 @@ void Grid::setUpGrid(Settings gridSettings)
 
 	gridArea = gridWidth * gridHeight;
 
+	if (theCellArray != nullptr) 
+	{
+		delete[] theCellArray;
+		theCellArray = nullptr;
+	}
+
 	theCellArray = new Cell[gridArea];
 	placeMines(gridSettings.getDifficultyLevel(), gridArea);
 }
 
-void Grid::flagCell(Vector2D cellPosition)
+void Grid::flagCell(Vector2D cellPosition, GameState& theGameState)
 {
 	cellPosition.correctVector();
 	Cell* cellToFlag = nullptr;
@@ -39,6 +45,16 @@ void Grid::flagCell(Vector2D cellPosition)
 		}
 		else
 		{
+			if (cellToFlag->isAMine()) 
+			{
+				numberOfMines--;
+
+				if (numberOfMines == 0) 
+				{
+					theGameState = GAMESTATE_WIN;
+				}
+			}
+
 			cellToFlag->setFlagState(true);
 			numberOfFlags--;
 		}
@@ -69,6 +85,11 @@ void Grid::unFlagCell(Vector2D cellPosition)
 		}
 		else
 		{
+			if (cellToUnFlag->isAMine())
+			{
+				numberOfMines++;
+			}
+
 			cellToUnFlag->setFlagState(false);
 			numberOfFlags++;
 		}
@@ -118,7 +139,6 @@ void Grid::checkCell(Vector2D cellPosition, GameState& currentState, bool classi
 			}
 			else if (currentCell->getNumberOfAjacentMines() == 0 && classicMode)
 			{
-				// reveal all ajacent mines here. 
 				checkAjacentMines(cellPosition);
 			}
 
