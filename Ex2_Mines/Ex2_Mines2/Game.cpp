@@ -51,7 +51,14 @@ void Game::startGameLoop()
 
 	system("cls");
 	theGrid.setUpGrid(gameSettings);
-	std::cout << "Here is your grid, Good luck: " << std::endl;
+	std::cout << "Here is your grid, "
+		<< "You need to find " << theGrid.getNumberOfMines() << " Mines " 
+		<<"Good luck: " 
+		<< std::endl;
+	theGrid.drawGrid();
+
+	std::cout << "Press enter to continue - ";
+	getchar();
 
 	if (gameSettings.getClassicModeState()) 
 	{
@@ -139,11 +146,12 @@ void Game::startGameLoop()
 	}
 	 
 	system("cls");
-	theGrid.drawGrid();
 
 	switch (gameState) 
 	{
 	case GAMESTATE_LOSS:
+		theGrid.revealMines();
+		theGrid.drawGrid();
 		std::cout << "BOOOOOOOOOOOOOOOOMMMMMMMMMMMMMMMMMM" << std::endl
 			<< "No you hit a mine "
 			<< "Game Over"
@@ -153,6 +161,7 @@ void Game::startGameLoop()
 		break;
 
 	case GAMESTATE_WIN:
+		theGrid.drawGrid();
 		std::cout << "Well done you cleared the board"
 			<< std::endl;
 

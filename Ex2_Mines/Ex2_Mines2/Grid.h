@@ -28,11 +28,13 @@ public:
 
 	void flagCell(Vector2D cellPosition);
 	void unFlagCell(Vector2D cellPosition);
+	void revealMines();
 
 	int getNoOfRemainingFlags();
 
 	void checkCell(Vector2D cellPosition, GameState& currentState, bool classicMode);
 	int getNumberOfRemainingCells();
+	int getNumberOfMines();
 
 	void drawGrid(bool isCheatsEnabled = false);
 

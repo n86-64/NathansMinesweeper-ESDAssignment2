@@ -83,6 +83,17 @@ void Grid::unFlagCell(Vector2D cellPosition)
 	return;
 }
 
+void Grid::revealMines()
+{
+	for (int i = 0; i < (gridWidth * gridHeight); i++) 
+	{
+		if (theCellArray[i].isAMine()) 
+		{
+			theCellArray[i].revealCell();
+		}
+	}
+}
+
 int Grid::getNoOfRemainingFlags()
 {
 	return numberOfFlags;
@@ -135,6 +146,11 @@ void Grid::checkCell(Vector2D cellPosition, GameState& currentState, bool classi
 int Grid::getNumberOfRemainingCells()
 {
 	return noOfHiddenCells;
+}
+
+int Grid::getNumberOfMines()
+{
+	return numberOfMines;
 }
 
 void Grid::drawGrid(bool isCheatsEnabled)
