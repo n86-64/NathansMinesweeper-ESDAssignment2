@@ -144,8 +144,15 @@ bool settingsMenu::checkInput(std::string input, int& parameterValue)
 			return false;
 		}
 
-		parameterValue = std::stoi(valueBuffer);
-		return true;
+		if (!valueBuffer.empty()) 
+		{
+			parameterValue = std::stoi(valueBuffer);
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
 	}
 }
 
