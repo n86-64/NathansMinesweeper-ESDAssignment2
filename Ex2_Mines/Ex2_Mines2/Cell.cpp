@@ -38,9 +38,9 @@ void Cell::placeMineHere()
 	return;
 }
 
-void Cell::setFlagState(bool newFlagState)
+void Cell::setFlagState(bool isFlagged)
 {
-	isFlagged = newFlagState;
+	isFlagged = isFlagged;
 	return;
 }
 
