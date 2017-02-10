@@ -1,13 +1,10 @@
 #include "Cell.h"
 
 Cell::Cell()
-{
-}
+{}
 
 Cell::~Cell()
-{
-
-}
+{}
 
 bool Cell::isAMine()
 {
@@ -32,21 +29,25 @@ int Cell::getNumberOfAjacentMines()
 void Cell::addToNumberOfAjacentMines()
 {
 	noOfAjacentMines++;
+	return;
 }
 
 void Cell::placeMineHere()
 {
 	isMine = true;
+	return;
 }
 
 void Cell::setFlagState(bool newFlagState)
 {
 	isFlagged = newFlagState;
+	return;
 }
 
 void Cell::revealCell()
 {
 	isVisible = true;
+	return;
 }
 
 

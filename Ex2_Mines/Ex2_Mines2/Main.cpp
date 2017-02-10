@@ -13,7 +13,6 @@ Purpose - The main thread where the application will both start and terminate.
 
 // REVIEW - Use SDL for sound (easier?)
 
-
 #include <iostream>
 #include <string>
 

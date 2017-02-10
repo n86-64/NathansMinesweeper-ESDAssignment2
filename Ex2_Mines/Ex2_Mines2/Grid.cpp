@@ -29,6 +29,7 @@ void Grid::setUpGrid(Settings gridSettings)
 
 	theCellArray = new Cell[gridArea];
 	placeMines(gridSettings.getDifficultyLevel(), gridArea);
+	return;
 }
 
 void Grid::flagCell(Vector2D cellPosition, GameState& theGameState)
@@ -115,6 +116,7 @@ void Grid::revealMines()
 			theCellArray[i].revealCell();
 		}
 	}
+	return;
 }
 
 int Grid::getNoOfRemainingFlags()
@@ -163,6 +165,7 @@ void Grid::checkCell(Vector2D cellPosition, GameState& currentState, bool classi
 			<< "Press enter to continue - ";
 		getchar();
 	}
+	return;
 }
 
 int Grid::getNumberOfRemainingCells()
@@ -267,8 +270,8 @@ void Grid::checkAjacentMines(Vector2D initialCellPosition)
 		}
 	}
 
-
 	positonList.clear();
+	return;
 }
 
 void Grid::placeMines(Difficulty difficultyFactor, int gridArea)

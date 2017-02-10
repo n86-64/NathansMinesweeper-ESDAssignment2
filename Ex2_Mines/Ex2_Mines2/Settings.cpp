@@ -11,6 +11,7 @@ void Settings::restoreDefaults()
 	fieldDimenstions.setY(10);
 	classicMode = true;
 	difficultyLevel = DIFFICULTY_EASY;
+	return;
 }
 
 int Settings::getGridWidth()
@@ -36,19 +37,23 @@ Difficulty Settings::getDifficultyLevel()
 void Settings::setGridWidth(int newValue)
 {
 	fieldDimenstions.setX(newValue);
+	return;
 }
 
 void Settings::setGridHeight(int newValue)
 {
 	fieldDimenstions.setY(newValue);
+	return;
 }
 
 void Settings::setClassicModeState(int newValue)
 {
 	classicMode = newValue;
+	return;
 }
 
 void Settings::setDifficultyLevel(int newValue)
 {
 	difficultyLevel = (Difficulty)newValue;
+	return;
 }
