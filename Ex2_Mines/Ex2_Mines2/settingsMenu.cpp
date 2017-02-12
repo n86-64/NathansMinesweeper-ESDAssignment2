@@ -104,6 +104,7 @@ void settingsMenu::retrieveMenuSelection(bool& inMenu)
 	return;
 }
 
+// REVIEW - consider cleaning up this function as unnessecery evaluation takes place. 
 bool settingsMenu::checkInput(std::string input, int& parameterValue)
 {
 	int whitespaces = 0;
