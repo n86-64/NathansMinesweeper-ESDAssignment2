@@ -23,6 +23,7 @@ public:
 	int getY();
 	void setX(int newValue);
 	void setY(int newValue);
+	void setXY(int X, int Y);
 
 	void resetVector();
 	void correctVector();

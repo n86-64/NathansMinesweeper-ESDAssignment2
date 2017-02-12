@@ -32,6 +32,13 @@ void Vector2D::setY(int newValue)
 	return;
 }
 
+void Vector2D::setXY(int X, int Y)
+{
+	x = X;
+	y = Y;
+	return;
+}
+
 void Vector2D::resetVector()
 {
 	x = 0;

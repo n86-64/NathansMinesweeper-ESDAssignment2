@@ -129,34 +129,45 @@ void Grid::checkCell(Vector2D cellPosition, GameState& currentState, bool classi
 {
 	cellPosition.correctVector();
 	Cell* currentCell = nullptr;
-	
+
 	if ((cellPosition.getX() < gridWidth) && (cellPosition.getY() < gridHeight))
 	{
 		currentCell = &theCellArray[getCellPosition(cellPosition)];
-		if (!currentCell->isCurrentlyVisible())
+		if (currentCell->isCurrentlyFlagged()) 
 		{
-			currentCell->revealCell();
-			noOfHiddenCells--;
 
-			if (currentCell->isAMine())
-			{
-				currentState = GAMESTATE_LOSS;
-			}
-			else if (currentCell->getNumberOfAjacentMines() == 0 && classicMode)
-			{
-				checkAjacentMines(cellPosition);
-			}
-
-			if (noOfHiddenCells == 0) 
-			{
-				currentState = GAMESTATE_WIN;
-			}
-		}
-		else
-		{
-			std::cout << "You have already selected this cell." << std::endl
+			std::cout << "You have flagged this cell. If you wish to select it please unflag" << std::endl
 				<< "Press enter to continue - ";
 			getchar();
+		}
+		else 
+		{
+
+			if (!currentCell->isCurrentlyVisible())
+			{
+				currentCell->revealCell();
+				noOfHiddenCells--;
+
+				if (currentCell->isAMine())
+				{
+					currentState = GAMESTATE_LOSS;
+				}
+				else if (currentCell->getNumberOfAjacentMines() == 0 && classicMode)
+				{
+					checkAjacentMines(cellPosition);
+				}
+
+				if (noOfHiddenCells == 0)
+				{
+					currentState = GAMESTATE_WIN;
+				}
+			}
+			else
+			{
+				std::cout << "You have already selected this cell." << std::endl
+					<< "Press enter to continue - ";
+				getchar();
+			}
 		}
 	}
 	else 
@@ -184,10 +195,8 @@ void Grid::drawGrid(bool isCheatsEnabled)
 	Cell* currentCell = nullptr;
 	Vector2D cellToDraw;
 
-	for (int y = 0; y <= gridHeight; y++) 
+	for (int y = 0; y < gridHeight; y++) 
 	{
-		if (y != gridHeight)
-		{
 			cellToDraw.setY(y);
 
 			if (y + 1 < 10)
@@ -198,7 +207,6 @@ void Grid::drawGrid(bool isCheatsEnabled)
 			{
 				std::cout << y + 1 << " |";
 			}
-		}
 
 		for (int x = 0; x < gridWidth; x++) 
 		{
@@ -314,9 +322,7 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 				{
 					if (!((x == minePosition.getX() && y == minePosition.getY()) || (x < 0 || y < 0) || (x >= gridWidth || y >= gridHeight))) 
 					{
-						navigationVector.setX(x);
-						navigationVector.setY(y);
-
+						navigationVector.setXY(x, y);
 						theCellArray[getCellPosition(navigationVector)].addToNumberOfAjacentMines();
 					}
 				}

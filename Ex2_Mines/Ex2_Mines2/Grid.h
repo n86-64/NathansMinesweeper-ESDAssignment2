@@ -10,8 +10,6 @@ File Contents - The class definition for a grid.
 Purpose - Contains the interface and logic for the minesweeper grid.
 */
 
-
-
 #pragma once
 
 
@@ -29,7 +27,6 @@ public:
 	void flagCell(Vector2D cellPosition, GameState& theGameState);
 	void unFlagCell(Vector2D cellPosition);
 	void revealMines();
-
 	int getNoOfRemainingFlags();
 
 	void checkCell(Vector2D cellPosition, GameState& currentState, bool classicMode);
@@ -37,8 +34,6 @@ public:
 	int getNumberOfMines();
 
 	void drawGrid(bool isCheatsEnabled = false);
-
-
 	void destroyGrid();
 
 private:
