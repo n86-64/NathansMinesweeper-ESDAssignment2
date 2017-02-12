@@ -23,8 +23,8 @@ int main()
 {
 	Game theGame; 
 
-	std::cout << "Welcome to Mainac Minesweeper \n"
-		<< " __  __          _   _ _____          _____ \n"
+	std::cout << "Welcome to Mainac Minesweeper \n"<<
+ " __  __          _   _ _____          _____ \n"
 " |  \/  |   /\   | \ | |_   _|   /\   / ____|  \n"
 " | \  / |  /  \  |  \| | | |    /  \ | |      \n"
 " | |\/| | / /\ \ | . ` | | |   / /\ \| |       \n"

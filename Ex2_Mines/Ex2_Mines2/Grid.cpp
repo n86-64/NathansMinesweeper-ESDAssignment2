@@ -184,34 +184,47 @@ void Grid::drawGrid(bool isCheatsEnabled)
 	Cell* currentCell = nullptr;
 	Vector2D cellToDraw;
 
-	for (int y = 0; y < gridHeight; y++) 
+	for (int y = 0; y <= gridHeight; y++) 
 	{
-		cellToDraw.setY(y);
+		if (y != gridHeight)
+		{
+			cellToDraw.setY(y);
+
+			if (y + 1 < 10)
+			{
+				std::cout << y + 1 << "  |";
+			}
+			else
+			{
+				std::cout << y + 1 << " |";
+			}
+		}
+
 		for (int x = 0; x < gridWidth; x++) 
 		{
-			cellToDraw.setX(x);
+				cellToDraw.setX(x);
 
-			currentCell = &theCellArray[getCellPosition(cellToDraw)];
+				currentCell = &theCellArray[getCellPosition(cellToDraw)];
 
-			if (currentCell->isCurrentlyFlagged())
-			{
-				std::cout << "F ";
-			}
-			else if ((!currentCell->isCurrentlyVisible()) && isCheatsEnabled == false)
-			{
-				std::cout << "* ";
-			}
-			else 
-			{
-				if (currentCell->isAMine())
+				if (currentCell->isCurrentlyFlagged())
 				{
-					std::cout << "M ";
+					std::cout << "F ";
 				}
-				else 
+				else if ((!currentCell->isCurrentlyVisible()) && isCheatsEnabled == false)
 				{
-					std::cout << currentCell->getNumberOfAjacentMines() << " ";
+					std::cout << "* ";
 				}
-			}
+				else
+				{
+					if (currentCell->isAMine())
+					{
+						std::cout << "M ";
+					}
+					else
+					{
+						std::cout << currentCell->getNumberOfAjacentMines() << " ";
+					}
+				}	
 		}
 		std::cout << std::endl;
 	}
