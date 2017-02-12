@@ -160,7 +160,7 @@ void Game::startGameLoop()
 		theGrid.revealMines();
 		theGrid.drawGrid();
 		std::cout << "BOOOOOOOOOOOOOOOOMMMMMMMMMMMMMMMMMM" << std::endl
-			<< "No you hit a mine "
+			<< "No, you hit a mine :-( "
 			<< "Game Over"
 			<< std::endl;
 		std::cout << "Press enter to return to the main menu - ";
@@ -169,7 +169,7 @@ void Game::startGameLoop()
 
 	case GAMESTATE_WIN:
 		theGrid.drawGrid();
-		std::cout << "Well done you cleared the board"
+		std::cout << "Well done you cleared the board :-)"
 			<< std::endl;
 
 		if (gameSettings.getClassicModeState()) 

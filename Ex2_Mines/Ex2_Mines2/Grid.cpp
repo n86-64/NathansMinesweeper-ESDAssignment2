@@ -40,6 +40,7 @@ void Grid::flagCell(Vector2D cellPosition, GameState& theGameState)
 	if ((cellPosition.getX() < gridWidth) && (cellPosition.getY() < gridHeight)) 
 	{
 		cellToFlag = &theCellArray[getCellPosition(cellPosition)];
+
 		if (cellToFlag->isCurrentlyFlagged())
 		{
 			std::cout << "This position is already flagged" << std::endl;
@@ -48,7 +49,7 @@ void Grid::flagCell(Vector2D cellPosition, GameState& theGameState)
 		}
 		else
 		{
-			if (cellToFlag->isAMine()) 
+			if (cellToFlag->isAMine())
 			{
 				numberOfMines--;
 

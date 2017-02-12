@@ -42,6 +42,5 @@ private:
 	settingsMenu theSettingsMenu;
 	Settings gameSettings;
 	Grid theGrid;
-
 	std::chrono::time_point<std::chrono::system_clock> startTime, endTime;
 };
