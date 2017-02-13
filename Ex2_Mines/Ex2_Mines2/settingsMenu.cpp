@@ -58,13 +58,13 @@ void settingsMenu::retrieveMenuSelection(bool& inMenu)
 			switch (theInput[0])
 			{
 			case 'W':
-				if (checkInputRangeValid(parameterValue,8,1000,isValid)) 
+				if (checkInputRangeValid(parameterValue,8,100,isValid)) 
 				{
 					settingsToModify->setGridWidth(parameterValue);
 				}
 				break;
 			case 'H':
-				if (checkInputRangeValid(parameterValue, 8, 1000, isValid))
+				if (checkInputRangeValid(parameterValue, 8, 100, isValid))
 				{
 					settingsToModify->setGridHeight(parameterValue);
 				}

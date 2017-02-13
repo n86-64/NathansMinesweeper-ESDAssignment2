@@ -183,6 +183,12 @@ void Game::startGameLoop()
 				<< "Press enter to return to the main menu";
 			getchar();
 		}
+		else 
+		{
+			std::cout << "Press enter to return to the main menu";
+			getchar();
+		}
+
 		break;
 	}
 
