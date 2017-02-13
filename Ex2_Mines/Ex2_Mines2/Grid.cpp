@@ -296,8 +296,7 @@ void Grid::checkAjacentMines(Vector2D initialCellPosition)
 void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 {
 	srand(time(NULL));
-	Vector2D minePosition;
-	Vector2D navigationVector;
+	Vector2D minePosition, navigationVector;
 	Cell* currentCell = nullptr; // TODO - add pointer here to do conditional checks on the cell 
 	
 	numberOfFlags = numberOfMines = ((int)difficultyFactor * gridArea) / 10;
