@@ -43,8 +43,14 @@ void Grid::flagCell(Vector2D cellPosition, GameState& theGameState)
 
 		if (cellToFlag->isCurrentlyFlagged())
 		{
-			std::cout << "This position is already flagged" << std::endl;
-			std::cout << "Press enter to continue - ";
+			std::cout << "This position is already flagged" << std::endl
+				<< "Press enter to continue - ";
+			getchar();
+		}
+		else if (cellToFlag->isCurrentlyVisible()) 
+		{
+			std::cout << "You cannot flag this cell as it has already been revealed."
+				<< "Press enter to continue - ";
 			getchar();
 		}
 		else
