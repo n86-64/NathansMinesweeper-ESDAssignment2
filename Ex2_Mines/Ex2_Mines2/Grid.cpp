@@ -254,8 +254,7 @@ int Grid::getCellPosition(Vector2D cellPosition)
 void Grid::checkAjacentMines(Vector2D initialCellPosition)
 {
 	Cell* currentCell = nullptr;
-	Vector2D currentPos;
-	Vector2D valueBuffer;
+	Vector2D currentPos, valueBuffer;
 
 	std::vector<Vector2D> positonList;
 	positonList.push_back(initialCellPosition);
