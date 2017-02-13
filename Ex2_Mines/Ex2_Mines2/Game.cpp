@@ -178,7 +178,7 @@ void Game::startGameLoop()
 			timeResult = endTime - startTime;
 			std::cout << "You cleared the board in "
 				<< std::round(timeResult.count())
-				<< " secounds"
+				<< " seconds"
 				<< std::endl
 				<< "Press enter to return to the main menu";
 			getchar();
