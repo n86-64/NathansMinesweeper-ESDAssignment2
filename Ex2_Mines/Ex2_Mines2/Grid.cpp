@@ -304,8 +304,7 @@ void Grid::placeMines(Difficulty difficultyFactor, int gridArea)
 
 	for (int i = numberOfMines; i != 0; i--) 
 	{
-		minePosition.setX(rand() % gridWidth);
-		minePosition.setY(rand() % gridHeight);
+		minePosition.setXY(rand() % gridWidth, rand() % gridHeight);
 
 		currentCell = &theCellArray[getCellPosition(minePosition)];
 
