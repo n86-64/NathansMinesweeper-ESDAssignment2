@@ -271,9 +271,7 @@ void Grid::checkAjacentMines(Vector2D initialCellPosition)
 			{
 				if (!((x == valueBuffer.getX() && y == valueBuffer.getY()) || (x < 0 || y < 0) || (x >= gridWidth || y >= gridHeight)))
 				{
-					currentPos.setX(x);
-					currentPos.setY(y);
-
+					currentPos.setXY(x, y);
 					currentCell = &theCellArray[getCellPosition(currentPos)];
 
 					if ((!currentCell->isCurrentlyVisible()) && (!currentCell->isAMine()))
